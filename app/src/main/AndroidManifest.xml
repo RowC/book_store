@@ -16,9 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.bitm.rc.bookstore.UserInfoActivity"></activity>
-        <activity android:name="com.bitm.rc.bookstore.BookInfoActivity"></activity>
-        <activity android:name="com.bitm.rc.bookstore.PublisherActivity"></activity>
+        <activity
+            android:name="com.bitm.rc.bookstore.UserInfoActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity
+            android:name="com.bitm.rc.bookstore.BookInfoActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity
+            android:name="com.bitm.rc.bookstore.PublisherActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity android:name="com.bitm.rc.bookstore.ProfileActivity"></activity>
     </application>
 
 </manifest>

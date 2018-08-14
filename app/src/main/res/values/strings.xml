@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">BookStore</string>
+    <string name="enter_book_name">Enter Book Name</string>
+    <string name="enter_author_name">Enter Author Name</string>
+    <string name="enter_book_quantity">Enter Book Quantity</string>
+    <string name="enter_publisher_name">Enter Publisher Name</string>
+    <string name="enter_edition">Enter Edition</string>
+    <string name="enter_country_name">Enter Country Name</string>
+    <string name="enter_language">Enter Language</string>
+    <string name="enter_price">Enter Price</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="enter_your_user_name">Enter your user name</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="add_book_info">Add Book Info</string>
+    <string name="add_publisher_info">Add Publisher Info</string>
+    <string name="sign_in">Sign in</string>
+    <string name="enter_user_name">Enter User Name</string>
+    <string name="enter_store_name">Enter Store Name</string>
+    <string name="submit">Submit</string>
 </resources>

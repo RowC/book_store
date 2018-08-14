@@ -30,13 +30,13 @@ class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COUNTRY = "country";
     public static final String LAN = "lan";
 
-    public static final String CREATE_USER_QUERY = "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
-            "" + COLUMN_FULL_NAME + " text," + COLUMN_USER_NAME + " text," + COLUMN_PASSWORD + " text,CONSTRAINT unique_user_name UNIQUE (COLUMN_USER_NAME));";
+    public static final String CREATE_USER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
+            "" + COLUMN_FULL_NAME + " text," + COLUMN_USER_NAME + " text," + COLUMN_PASSWORD + " text,CONSTRAINT unique_user_name UNIQUE (" + COLUMN_USER_NAME + "));";
 
-    public static final String CREATE_PUBLISHER_QUERY = "CREATE TABLE " + TABLE_NAME_PUBLISHER_INFO + " (" + PUBLISHER_ID + " integer primary key autoincrement," +
+    public static final String CREATE_PUBLISHER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_PUBLISHER_INFO + " (" + PUBLISHER_ID + " integer primary key autoincrement," +
             "" + PUBLISHER_NAME + " text," + PUBLISHER_ADDRESS + " text," + ENTRY_DATE + " text,CONSTRAINT unique_user_name UNIQUE (PUBLISHER_NAME));";
 
-    public static final String CREATE_BOOK_QUERY = "CREATE TABLE " + TABLE_NAME_BOOK_INFO + " (" + BOOK_ID + " integer primary key autoincrement," +
+    public static final String CREATE_BOOK_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_BOOK_INFO + " (" + BOOK_ID + " integer primary key autoincrement," +
             "" + BOOK_NAME + " text," + AUTHOR_NAME + " text," + EDITION + " text," + PUBLISHER + " text," + QTY + " text," + UNIT_PRICE + " text," + COUNTRY + " text," + LAN + " text);";
 
 
@@ -46,6 +46,9 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        /*******drop table*****/
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + CREATE_USER_QUERY + "'");
+        /******end*******/
         // creating required tables
         sqLiteDatabase.execSQL(CREATE_USER_QUERY);
         sqLiteDatabase.execSQL(CREATE_PUBLISHER_QUERY);
