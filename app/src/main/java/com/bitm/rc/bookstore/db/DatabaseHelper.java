@@ -47,7 +47,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         /*******drop table*****/
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + CREATE_USER_QUERY + "'");
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + CREATE_USER_QUERY + "'");
         /******end*******/
         // creating required tables
         sqLiteDatabase.execSQL(CREATE_USER_QUERY);
