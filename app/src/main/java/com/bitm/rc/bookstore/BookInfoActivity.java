@@ -1,9 +1,8 @@
 package com.bitm.rc.bookstore;
 
-import android.database.Cursor;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -11,11 +10,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
-import com.bitm.rc.bookstore.db.BookInfoManager;
+import com.bitm.rc.bookstore.controller.BookInfoManager;
 import com.bitm.rc.bookstore.model.BookInfo;
 import com.bitm.rc.bookstore.model.PublisherInfo;
-
-import java.util.Date;
 
 public class BookInfoActivity extends AppCompatActivity {
     EditText bookName;
@@ -40,23 +37,45 @@ public class BookInfoActivity extends AppCompatActivity {
         price = findViewById(R.id.price);
         country = findViewById(R.id.country);
         language = findViewById(R.id.language);
+        publisher = findViewById(R.id.publisher);
         addItemsOnSpinner();
     }
     public void add(View view) {
         BookInfo bookInfo = new BookInfo();
-        bookInfo.setBookName(bookName.getText().toString());
-        bookInfo.setAuthor(author.getText().toString());
-        bookInfo.setEdition(edition.getText().toString());
-        bookInfo.setQuantity(Integer.getInteger(quantity.getText().toString()));
-        bookInfo.setPrice(price.getText().toString());
-        bookInfo.setCountry(country.getText().toString());
-        bookInfo.setLanguage(language.getText().toString());
-        long insertedRow = bookInfoManager.addBookInfo(bookInfo);
-        if (insertedRow > 0) {
-            Toast.makeText(this, "" + insertedRow, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "something went wrong!!!", Toast.LENGTH_SHORT).show();
+
+        if( TextUtils.isEmpty(bookName.getText())){
+           bookName.setError( "Book name is required!" );
         }
+        if(TextUtils.isEmpty(author.getText())){
+            author.setError( "Author name is required!" );
+        }
+        if(TextUtils.isEmpty(quantity.getText())){
+            quantity.setError( "Quantity is required!" );
+        }
+       /* if(TextUtils.isEmpty(publisher.getSelectedItem().toString())){
+            publisher.setError( "Quantity is required!" );
+        }*/
+        if(TextUtils.isEmpty(price.getText())){
+            price.setError( "Price is required!" );
+        }
+        else {
+            bookInfo.setBookName(bookName.getText().toString());
+            bookInfo.setAuthor(author.getText().toString());
+            bookInfo.setEdition(edition.getText().toString());
+            bookInfo.setPublisherInfoList(publisher.getSelectedItem().toString());
+            bookInfo.setQuantity(Integer.getInteger(quantity.getText().toString()));
+            bookInfo.setPrice(price.getText().toString());
+            bookInfo.setCountry(country.getText().toString());
+            bookInfo.setLanguage(language.getText().toString());
+            long insertedRow = bookInfoManager.addBookInfo(bookInfo);
+            if (insertedRow > 0) {
+                Toast.makeText(this, "" + insertedRow, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "something went wrong!!!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
     }
     /*******Spinner*********/
     public void addItemsOnSpinner() {
@@ -72,6 +91,7 @@ public class BookInfoActivity extends AppCompatActivity {
     }
 
     /**********end**************/
+
 
 
 }

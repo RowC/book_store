@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
-import com.bitm.rc.bookstore.db.UserInfoManager;
+import com.bitm.rc.bookstore.controller.UserInfoManager;
 import com.bitm.rc.bookstore.model.UserInfo;
 
 public class UserInfoActivity extends AppCompatActivity {

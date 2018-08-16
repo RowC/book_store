@@ -1,9 +1,10 @@
-package com.bitm.rc.bookstore.db;
+package com.bitm.rc.bookstore.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.bitm.rc.bookstore.db.DatabaseHelper;
 import com.bitm.rc.bookstore.model.UserInfo;
 
 public class UserInfoManager {

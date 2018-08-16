@@ -7,10 +7,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
-import com.bitm.rc.bookstore.db.PublisherInfoManager;
-import com.bitm.rc.bookstore.db.UserInfoManager;
+import com.bitm.rc.bookstore.controller.PublisherInfoManager;
 import com.bitm.rc.bookstore.model.PublisherInfo;
-import com.bitm.rc.bookstore.model.UserInfo;
 
 import java.util.Date;
 

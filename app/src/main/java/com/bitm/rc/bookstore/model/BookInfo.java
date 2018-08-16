@@ -3,6 +3,7 @@ package com.bitm.rc.bookstore.model;
 import java.util.ArrayList;
 
 public class BookInfo {
+    private Integer id;
     private String bookName;
     private String author;
     private String edition;
@@ -10,8 +11,19 @@ public class BookInfo {
     private String language;
     private String price;
     private Integer quantity;
-    private ArrayList<PublisherInfo> publisherInfoList;
+    private String  publisherInfoList;
 
+    public BookInfo() {
+    }
+
+    public BookInfo(Integer id, String bookName, String author, String edition, String price, Integer quantity) {
+        this.id = id;
+        this.bookName = bookName;
+        this.author = author;
+        this.edition = edition;
+        this.price = price;
+        this.quantity = quantity;
+    }
 
     public String getBookName() {
         return bookName;
@@ -69,11 +81,13 @@ public class BookInfo {
         this.quantity = quantity;
     }
 
-    public ArrayList<PublisherInfo> getPublisherInfoList() {
+    public String getPublisherInfoList() {
         return publisherInfoList;
     }
 
-    public void setPublisherInfoList(ArrayList<PublisherInfo> publisherInfoList) {
+    public void setPublisherInfoList(String publisherInfoList) {
         this.publisherInfoList = publisherInfoList;
     }
+
+//    https://tausiq.wordpress.com/2013/01/19/android-input-field-validation/
 }

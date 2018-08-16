@@ -25,7 +25,8 @@
         <activity
             android:name="com.bitm.rc.bookstore.PublisherActivity"
             android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
-        <activity android:name="com.bitm.rc.bookstore.ProfileActivity"></activity>
+        <activity android:name="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity android:name="com.bitm.rc.bookstore.BookInfoListActivity"></activity>
     </application>
 
 </manifest>
