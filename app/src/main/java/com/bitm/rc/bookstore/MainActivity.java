@@ -32,4 +32,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,UserInfoActivity.class);
         startActivity(intent);
     }
+    public void bookInfoList(View view) {
+        Intent intent = new Intent(this,BookInfoListActivity.class);
+        startActivity(intent);
+    }
 }

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -14,7 +16,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/headingTv"
+                android:id="@+id/bookTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Book 1"
@@ -22,7 +24,28 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/dtlTv"
+                android:id="@+id/authorTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="details"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/editionTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="details"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/qtyTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="details"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/priceTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="details"

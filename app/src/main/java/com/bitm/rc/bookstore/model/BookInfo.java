@@ -16,13 +16,21 @@ public class BookInfo {
     public BookInfo() {
     }
 
-    public BookInfo(Integer id, String bookName, String author, String edition, String price, Integer quantity) {
-        this.id = id;
+    public BookInfo(String bookName, String author, String edition, String price, Integer quantity) {
+//        this.id = id;
         this.bookName = bookName;
         this.author = author;
         this.edition = edition;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBookName() {

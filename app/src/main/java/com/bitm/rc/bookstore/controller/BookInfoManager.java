@@ -14,6 +14,9 @@ import java.util.ArrayList;
 public class BookInfoManager {
     DatabaseHelper databaseHelper;
 
+    public BookInfoManager() {
+    }
+
     public BookInfoManager(Context context) {
         databaseHelper = new DatabaseHelper(context);
     }
@@ -42,6 +45,7 @@ public class BookInfoManager {
     public long addBookInfo(BookInfo bookInfo){
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
+//        contentValues.put(databaseHelper.BOOK_ID, bookInfo.getId());
         contentValues.put(databaseHelper.BOOK_NAME, bookInfo.getBookName());
         contentValues.put(databaseHelper.AUTHOR_NAME,bookInfo.getAuthor());
         contentValues.put(databaseHelper.EDITION,bookInfo.getEdition());
@@ -62,13 +66,14 @@ public class BookInfoManager {
         Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
         if(cursor.moveToFirst()){
             do{
-                int id=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.PUBLISHER_ID));
+//                int id=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.PUBLISHER_ID));
+//                int id=cursor.getInt(cursor.getColumnIndex("1"));
                 String bookName=cursor.getString(cursor.getColumnIndex(DatabaseHelper.BOOK_NAME));
                 String authorName=cursor.getString(cursor.getColumnIndex(DatabaseHelper.AUTHOR_NAME));
                 String edition=cursor.getString(cursor.getColumnIndex(DatabaseHelper.EDITION));
-                String price=cursor.getString(cursor.getColumnIndex(DatabaseHelper.UNIT_PRICE));
                 int quantity=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.QTY));
-                BookInfo bookInfo=new BookInfo(id,bookName,authorName,edition,price,quantity);
+                String price=cursor.getString(cursor.getColumnIndex(DatabaseHelper.UNIT_PRICE));
+                BookInfo bookInfo=new BookInfo(bookName,authorName,edition,price,quantity);
                 bookInfos.add(bookInfo);
             }while(cursor.moveToNext());
         }
