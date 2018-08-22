@@ -1,22 +1,37 @@
 package com.bitm.rc.bookstore;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SimpleItemAnimator;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
 import com.bitm.rc.bookstore.controller.BookInfoManager;
 import com.bitm.rc.bookstore.controller.BookListAdapter;
 import com.bitm.rc.bookstore.model.BookInfo;
+import com.bitm.rc.bookstore.model.PublisherInfo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookInfoListActivity extends AppCompatActivity {
-private RecyclerView recyclerView;
-private RecyclerView.Adapter adapter;
-BookInfoManager bookInfoManager;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
+public class BookInfoListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+    private RecyclerView recyclerView;
+    private BookListAdapter adapter;
+    BookInfoManager bookInfoManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,22 +40,52 @@ BookInfoManager bookInfoManager;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         bookInfoManager = new BookInfoManager(this);
-        ArrayList<BookInfo>bookInfoList=bookInfoManager.getBookList();
+        ArrayList<BookInfo> bookInfoList = bookInfoManager.getBookList();
 //        ArrayList<String>listForDisplay=new ArrayList<>();
 
         List<BookInfo> bookInfos = new ArrayList<BookInfo>();
-        for(BookInfo info:bookInfoList){
-            //BookInfo bookInfo = new BookInfo(1,"Book 1"+i+1,"Author 1","1st","120/pc",100);
-            Integer id = info.getId();
-            String bName = info.getBookName().toString();
-            String aName = info.getAuthor().toString();
-            String edition = info.getEdition().toString();
-            String qty = info.getQuantity().toString();
-            Integer price = Integer.valueOf(info.getPrice());
-            BookInfo bookInfo = new BookInfo(bName,aName,edition,qty,price);
+        Integer id;String bName,aName,edition,publisher,lan, price; Integer qty;
+        for (BookInfo info : bookInfoList) {
+             id= info.getId();
+            bName = info.getBookName().toString();
+            aName = info.getAuthor().toString();
+            edition = info.getEdition().toString();
+            publisher = info.getPublisherInfoList().toString();
+            qty = Integer.valueOf(info.getQuantity());
+            price = (info.getPrice());
+            lan = info.getLanguage().toString();
+            BookInfo bookInfo = new BookInfo(id, bName, aName, edition,publisher, qty, price,lan);
             bookInfos.add(bookInfo);
         }
-        adapter= new BookListAdapter(bookInfos,this);
+
+        adapter = new BookListAdapter(bookInfos, this);
         recyclerView.setAdapter(adapter);
+        recyclerView.setItemAnimator(new SlideInUpAnimator());
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.getFilter().filter(newText);
+        return true;
+    }
+
+
+
+    /**********end**************/
+
 }

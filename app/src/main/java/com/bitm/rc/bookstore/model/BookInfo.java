@@ -7,22 +7,24 @@ public class BookInfo {
     private String bookName;
     private String author;
     private String edition;
-    private String country;
-    private String language;
     private String price;
     private Integer quantity;
     private String  publisherInfoList;
+    private String country;
+    private String language;
 
     public BookInfo() {
     }
 
-    public BookInfo(String bookName, String author, String edition, String price, Integer quantity) {
-//        this.id = id;
+    public BookInfo(Integer id,String bookName, String author, String edition,String publisherInfoList, Integer quantity, String price,String language) {
+        this.id = id;
         this.bookName = bookName;
         this.author = author;
         this.edition = edition;
-        this.price = price;
+        this.publisherInfoList = publisherInfoList;
         this.quantity = quantity;
+        this.price = price;
+        this.language = language;
     }
 
     public Integer getId() {

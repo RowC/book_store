@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class BookInfoManager {
     DatabaseHelper databaseHelper;
-
+    SQLiteDatabase sqLiteDatabase;
     public BookInfoManager() {
     }
 
@@ -23,7 +23,7 @@ public class BookInfoManager {
 
     //method for spinner
     public ArrayList<String> addItems() {
-        SQLiteDatabase sqLiteDatabase = databaseHelper.getReadableDatabase();
+        sqLiteDatabase = databaseHelper.getReadableDatabase();
         ArrayList<String> list = new ArrayList();
         list.add("Select One");
         Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM publisher_info WHERE 1 = 1", null);
@@ -41,11 +41,30 @@ public class BookInfoManager {
     }
     /************end******************/
 
-
+/*******************add book info*********************/
     public long addBookInfo(BookInfo bookInfo){
-        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
-//        contentValues.put(databaseHelper.BOOK_ID, bookInfo.getId());
+        contentValues.put(databaseHelper.BOOK_ID, bookInfo.getId());
+        contentValues.put(databaseHelper.BOOK_NAME, bookInfo.getBookName());
+        contentValues.put(databaseHelper.AUTHOR_NAME,bookInfo.getAuthor());
+        contentValues.put(databaseHelper.EDITION,bookInfo.getEdition());
+        contentValues.put(databaseHelper.PUBLISHER, bookInfo.getPublisherInfoList());
+        contentValues.put(databaseHelper.QTY, bookInfo.getQuantity());
+        contentValues.put(databaseHelper.UNIT_PRICE, bookInfo.getPrice());
+        contentValues.put(databaseHelper.COUNTRY, "");
+        contentValues.put(databaseHelper.LAN, bookInfo.getLanguage());
+        long insertRow = sqLiteDatabase.insert(databaseHelper.TABLE_NAME_BOOK_INFO,null,contentValues);
+        sqLiteDatabase.close();
+        return insertRow;
+    }
+/***********************end*************************/
+
+    /*******************add book info*********************/
+   /* public long editBookInfo(BookInfo bookInfo){
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put(databaseHelper.BOOK_ID, bookInfo.getId());
         contentValues.put(databaseHelper.BOOK_NAME, bookInfo.getBookName());
         contentValues.put(databaseHelper.AUTHOR_NAME,bookInfo.getAuthor());
         contentValues.put(databaseHelper.EDITION,bookInfo.getEdition());
@@ -54,29 +73,56 @@ public class BookInfoManager {
         contentValues.put(databaseHelper.UNIT_PRICE, bookInfo.getPrice());
         contentValues.put(databaseHelper.COUNTRY, bookInfo.getCountry());
         contentValues.put(databaseHelper.LAN, bookInfo.getLanguage());
-        long insertRow = sqLiteDatabase.insert(databaseHelper.TABLE_NAME_BOOK_INFO,null,contentValues);
+        long insertRow = sqLiteDatabase.update(databaseHelper.TABLE_NAME_BOOK_INFO,null,DatabaseHelper.BOOK_ID+" =?",new String[]{String.valueOf(bookInfo.getId())},contentValues);
         sqLiteDatabase.close();
         return insertRow;
-    }
+    }*/
+/***********************end*************************/
 
+/* delete/Remove record from recycler view and database*/
+public boolean delete(int id)
+{
+    try {
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
+        int result=sqLiteDatabase.delete(databaseHelper.TABLE_NAME_BOOK_INFO,DatabaseHelper.BOOK_ID+" =?",new String[]{String.valueOf(id)});
+        if(result>0) {
+            return true;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
+    /************get recycler view list data method**************/
     public ArrayList<BookInfo> getBookList(){
-        SQLiteDatabase sqLiteDatabase=databaseHelper.getReadableDatabase();
+        sqLiteDatabase=databaseHelper.getReadableDatabase();
         ArrayList<BookInfo>bookInfos=new ArrayList<>();
         String selectQuery="select * from "+DatabaseHelper.TABLE_NAME_BOOK_INFO;
         Cursor cursor=sqLiteDatabase.rawQuery(selectQuery,null);
         if(cursor.moveToFirst()){
             do{
-//                int id=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.PUBLISHER_ID));
+                int id=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.BOOK_ID));
 //                int id=cursor.getInt(cursor.getColumnIndex("1"));
                 String bookName=cursor.getString(cursor.getColumnIndex(DatabaseHelper.BOOK_NAME));
                 String authorName=cursor.getString(cursor.getColumnIndex(DatabaseHelper.AUTHOR_NAME));
                 String edition=cursor.getString(cursor.getColumnIndex(DatabaseHelper.EDITION));
                 int quantity=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.QTY));
                 String price=cursor.getString(cursor.getColumnIndex(DatabaseHelper.UNIT_PRICE));
-                BookInfo bookInfo=new BookInfo(bookName,authorName,edition,price,quantity);
+                String publisher=cursor.getString(cursor.getColumnIndex(DatabaseHelper.PUBLISHER));
+                String lan=cursor.getString(cursor.getColumnIndex(DatabaseHelper.LAN));
+                BookInfo bookInfo=new BookInfo(id,bookName,authorName,edition,publisher,quantity,price,lan);
+               /* if(!bookInfo.equals(null)){
+
+                }else {
+                    String [] ss = {"No Record Found"};
+                    bookInfos.add(ss);
+                }*/
                 bookInfos.add(bookInfo);
             }while(cursor.moveToNext());
         }
         return bookInfos;
     }
+/**********************end***************************/
 }

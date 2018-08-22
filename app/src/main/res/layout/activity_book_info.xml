@@ -13,6 +13,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <EditText
+            android:id="@+id/book_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_book_name"
+            android:inputType="text"/>
+        <EditText
             android:id="@+id/book_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,11 +30,36 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_author_name"
             android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/edition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_edition"
+            android:inputType="text"/>
+        <Spinner
+            android:id="@+id/publisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="marquee"
+            android:spinnerMode="dropdown"
+            android:hint="@string/enter_publisher_name" />
         <EditText
             android:id="@+id/qty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_book_quantity"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_price"
             android:inputType="text"/>
         <!--<EditText
             android:id="@+id/publisher"
@@ -44,40 +75,18 @@
 
             android:layout_centerVertical="true"
      -->
-        <Spinner
-            android:id="@+id/publisher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:padding="10dp"
-            android:layout_marginLeft="5dp"
-            android:ellipsize="marquee"
-            android:spinnerMode="dropdown"
-            android:hint="@string/enter_publisher_name" />
-        <EditText
-            android:id="@+id/edition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_edition"
-            android:inputType="text"/>
-        <EditText
+
+       <!-- <EditText
             android:id="@+id/country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_country_name"
-            android:inputType="text"/>
+            android:inputType="text"/>-->
         <EditText
             android:id="@+id/language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_language"
-            android:inputType="text"/>
-        <EditText
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_price"
             android:inputType="text"/>
 
         <Button

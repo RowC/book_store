@@ -35,7 +35,7 @@ public class BookInfoActivity extends AppCompatActivity {
         edition = findViewById(R.id.edition);
         quantity = findViewById(R.id.qty);
         price = findViewById(R.id.price);
-        country = findViewById(R.id.country);
+//        country = findViewById(R.id.country);
         language = findViewById(R.id.language);
         publisher = findViewById(R.id.publisher);
         addItemsOnSpinner();
@@ -63,9 +63,9 @@ public class BookInfoActivity extends AppCompatActivity {
             bookInfo.setAuthor(author.getText().toString());
             bookInfo.setEdition(edition.getText().toString());
             bookInfo.setPublisherInfoList(publisher.getSelectedItem().toString());
-            bookInfo.setQuantity(Integer.getInteger(quantity.getText().toString()));
+            bookInfo.setQuantity(Integer.valueOf(quantity.getText().toString()));
             bookInfo.setPrice(price.getText().toString());
-            bookInfo.setCountry(country.getText().toString());
+//            bookInfo.setCountry(country.getText().toString());
             bookInfo.setLanguage(language.getText().toString());
             long insertedRow = bookInfoManager.addBookInfo(bookInfo);
             if (insertedRow > 0) {
