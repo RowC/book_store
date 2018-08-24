@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -20,9 +21,10 @@ public class BookInfoActivity extends AppCompatActivity {
     EditText edition;
     EditText quantity;
     EditText price;
-    EditText country;
     EditText language;
     Spinner publisher;
+    Button edit;
+    Button cancel;
     BookInfoManager bookInfoManager =new BookInfoManager(this);
 
     @Override
@@ -39,6 +41,22 @@ public class BookInfoActivity extends AppCompatActivity {
         language = findViewById(R.id.language);
         publisher = findViewById(R.id.publisher);
         addItemsOnSpinner();
+
+
+
+
+        edit = findViewById(R.id.editBtn);
+        cancel = findViewById(R.id.cancelBtn);
+        edit.setVisibility(View.GONE);
+        cancel.setVisibility(View.GONE);
+        /*playButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //when play is clicked show stop button and hide play button
+                playButton.setVisibility(View.GONE);
+                stopButton.setVisibility(View.VISIBLE);
+            }
+        });*/
     }
     public void add(View view) {
         BookInfo bookInfo = new BookInfo();
@@ -89,6 +107,7 @@ public class BookInfoActivity extends AppCompatActivity {
         }*/
         publisher.setAdapter(dataAdapter);
     }
+
 
     /**********end**************/
 

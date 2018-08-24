@@ -60,8 +60,8 @@ public class BookInfoManager {
     }
 /***********************end*************************/
 
-    /*******************add book info*********************/
-   /* public long editBookInfo(BookInfo bookInfo){
+    /*******************edit book info*********************/
+    public long editBookInfo(BookInfo bookInfo){
         sqLiteDatabase = databaseHelper.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put(databaseHelper.BOOK_ID, bookInfo.getId());
@@ -73,10 +73,15 @@ public class BookInfoManager {
         contentValues.put(databaseHelper.UNIT_PRICE, bookInfo.getPrice());
         contentValues.put(databaseHelper.COUNTRY, bookInfo.getCountry());
         contentValues.put(databaseHelper.LAN, bookInfo.getLanguage());
-        long insertRow = sqLiteDatabase.update(databaseHelper.TABLE_NAME_BOOK_INFO,null,DatabaseHelper.BOOK_ID+" =?",new String[]{String.valueOf(bookInfo.getId())},contentValues);
+//        long insertRow1 = sqLiteDatabase.update(databaseHelper.TABLE_NAME_BOOK_INFO,null,DatabaseHelper.BOOK_ID+" =?",new String[]{String.valueOf(bookInfo.getId())},contentValues);
+
+
+        long insertRow =   sqLiteDatabase.update(DatabaseHelper.TABLE_NAME_BOOK_INFO, contentValues, DatabaseHelper.BOOK_ID + " = ?",
+                new String[]{String.valueOf(bookInfo.getId())});
         sqLiteDatabase.close();
         return insertRow;
-    }*/
+
+    }
 /***********************end*************************/
 
 /* delete/Remove record from recycler view and database*/

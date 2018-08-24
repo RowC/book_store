@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         private int pos;
         public TextView textViewPublisher;
         public TextView textViewLanguage;
+
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -233,9 +237,9 @@ bookInfoManager.delete(Integer.parseInt(del_id));
 
         d.show();
     }*/
-    public void displayDialog(int position) {
-        Spinner publisher;
-        Dialog d = new Dialog(context);
+    public void displayDialog(final int position) {
+        final  Spinner publisher;
+       final Dialog d = new Dialog(context);
         d.setTitle("SQLite Database");
         d.setContentView(R.layout.activity_book_info);
         BookInfo info = bookInfoListsFull.get(position);
@@ -248,14 +252,18 @@ bookInfoManager.delete(Integer.parseInt(del_id));
         String bookQty = info.getQuantity().toString();
         String bookPrice = info.getPrice();
         String bookLanguage = info.getLanguage();
-        EditText bookId = d.findViewById(R.id.book_id);
-        EditText bookTxt = d.findViewById(R.id.book_name);
-        EditText author = d.findViewById(R.id.author_name);
-        EditText edition = d.findViewById(R.id.edition);
-        EditText quantity = d.findViewById(R.id.qty);
-        EditText price = d.findViewById(R.id.price);
-        EditText language = d.findViewById(R.id.language);
-
+       final EditText bookId = d.findViewById(R.id.book_id);
+        final EditText bookTxt = d.findViewById(R.id.book_name);
+        final EditText author = d.findViewById(R.id.author_name);
+        final  EditText edition = d.findViewById(R.id.edition);
+        final  EditText quantity = d.findViewById(R.id.qty);
+        final  EditText price = d.findViewById(R.id.price);
+        final  EditText language = d.findViewById(R.id.language);
+        Button save = d.findViewById(R.id.saveBtn);
+        Button edit = d.findViewById(R.id.editBtn);
+        Button cancel = d.findViewById(R.id.cancelBtn);
+        save.setVisibility(View.GONE);
+        cancel.setVisibility(View.VISIBLE);
         bookId.setText(id);
         bookTxt.setText(bookName.toString());
         author.setText(bookAuthor);
@@ -263,7 +271,7 @@ bookInfoManager.delete(Integer.parseInt(del_id));
         quantity.setText(bookQty);
         price.setText(bookPrice);
         language.setText(bookLanguage);
-       /*******Spinner*********/
+        /*******Spinner*********/
         publisher = d.findViewById(R.id.publisher);
         ArrayAdapter<PublisherInfo> dataAdapter = new ArrayAdapter(context,
                 android.R.layout.simple_spinner_item, bookInfoManager.addItems());
@@ -276,6 +284,69 @@ bookInfoManager.delete(Integer.parseInt(del_id));
             }
         }
         d.show();
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(bookTxt.getText())) {
+                    bookTxt.setError("Book name is required!");
+                }
+                if (TextUtils.isEmpty(author.getText())) {
+                    author.setError("Author name is required!");
+                }
+                if (TextUtils.isEmpty(quantity.getText())) {
+                    quantity.setError("Quantity is required!");
+                }
+       /* if(TextUtils.isEmpty(publisher.getSelectedItem().toString())){
+            publisher.setError( "Quantity is required!" );
+        }*/
+                if (TextUtils.isEmpty(price.getText())) {
+                    price.setError("Price is required!");
+                } else {
+                   BookListAdapter adapter =new BookListAdapter(bookInfoListsFull,context);
+                    BookInfo info = bookInfoListsFull.get(position);
+                    info.setBookName(bookTxt.getText().toString());
+                    info.setAuthor(author.getText().toString());
+                    info.setEdition(edition.getText().toString());
+                    info.setPublisherInfoList(publisher.getSelectedItem().toString());
+                    info.setQuantity(Integer.valueOf(quantity.getText().toString()));
+                    info.setPrice(price.getText().toString());
+                    info.setLanguage(language.getText().toString());
+                    long insertedRow = bookInfoManager.editBookInfo(info);
+                    if (insertedRow > 0) {
+                        adapter.notifyItemChanged(position);
+//                        bookInfoManager.getBookList();
+                    } else {
+                        Toast.makeText(context, "something went wrong!!!", Toast.LENGTH_SHORT).show();
+                    }
+                    d.dismiss();
+
+
+                }
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                d.cancel();
+            }
+        });
     }
+
+   /* private void updateNote(String note, int position) {
+        Note n = notesList.get(position);
+        // updating note text
+        n.setNote(note);
+
+        // updating note in db
+        db.updateNote(n);
+
+        // refreshing the list
+        notesList.set(position, n);
+        mAdapter.notifyItemChanged(position);
+
+        toggleEmptyNotes();
+    }*/
 
 }
