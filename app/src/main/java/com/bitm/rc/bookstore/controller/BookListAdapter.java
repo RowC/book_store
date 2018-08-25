@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
 import com.bitm.rc.bookstore.model.BookInfo;
+import com.bitm.rc.bookstore.model.BookSales;
 import com.bitm.rc.bookstore.model.PublisherInfo;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
     List<BookInfo> bookInfoListsFull;
     Context context;
     BookInfoManager bookInfoManager;
+    SalesInfoManager salesInfoManager;
 
     public BookListAdapter(List<BookInfo> bookInfoLists, Context context) {
         this.bookInfoLists = bookInfoLists;
@@ -63,6 +65,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         public TextView textViewPrice;
         public ImageView imgEdit;
         public ImageView imgDelete;
+        public ImageView imgSales;
         private int pos;
         public TextView textViewPublisher;
         public TextView textViewLanguage;
@@ -74,6 +77,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
             super(itemView);
             imgEdit = itemView.findViewById(R.id.imgEdit);
             imgDelete = itemView.findViewById(R.id.imgDlt);
+            imgSales = itemView.findViewById(R.id.imgSls);
             textViewbookId = itemView.findViewById(R.id.bookIdTv);
             textViewBookName = itemView.findViewById(R.id.bookTv);
             textViewAuthorName = itemView.findViewById(R.id.authorTv);
@@ -95,7 +99,11 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
                 case R.id.imgEdit:
                     pos = getAdapterPosition();
                     displayDialog(pos);
-//                    Toast.makeText(context,"Index Position "+pos,Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.imgSls:
+//                    Toast.makeText(context,"hhh",Toast.LENGTH_LONG).show();
+                    pos = getAdapterPosition();
+                    displaySalesInfoDialog(pos);
                     break;
             }
         }
@@ -103,6 +111,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         public void setListener() {
             imgEdit.setOnClickListener(ViewHolder.this);
             imgDelete.setOnClickListener(ViewHolder.this);
+            imgSales.setOnClickListener(ViewHolder.this);
         }
 
         /*@Override
@@ -135,15 +144,15 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return bookInfoLists.size();
+        return bookInfoListsFull.size();
     }
 
     @Override
     public Filter getFilter() {
-        return exampleFilter;
+        return bookFilter;
     }
 
-    private Filter exampleFilter = new Filter() {
+    private Filter bookFilter = new Filter() {
 
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
@@ -167,6 +176,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
             bookInfoLists.clear();
             bookInfoLists.addAll((List) filterResults.values);
+
+           /* bookInfoListsFull.clear();
+            bookInfoListsFull.addAll((List) filterResults.values);*/
             notifyDataSetChanged();
         }
     };
@@ -242,7 +254,8 @@ bookInfoManager.delete(Integer.parseInt(del_id));
        final Dialog d = new Dialog(context);
         d.setTitle("SQLite Database");
         d.setContentView(R.layout.activity_book_info);
-        BookInfo info = bookInfoListsFull.get(position);
+//        BookInfo info = bookInfoListsFull.get(position);
+        BookInfo info = bookInfoLists.get(position);
         bookInfoManager = new BookInfoManager(context);
         String id = info.getId().toString();
         String bookName = info.getBookName();
@@ -303,8 +316,9 @@ bookInfoManager.delete(Integer.parseInt(del_id));
                 if (TextUtils.isEmpty(price.getText())) {
                     price.setError("Price is required!");
                 } else {
-                   BookListAdapter adapter =new BookListAdapter(bookInfoListsFull,context);
-                    BookInfo info = bookInfoListsFull.get(position);
+//                   BookListAdapter adapter =new BookListAdapter(bookInfoListsFull,context);
+                   BookListAdapter adapter =new BookListAdapter(bookInfoLists,context);
+                    BookInfo info = bookInfoLists.get(position);
                     info.setBookName(bookTxt.getText().toString());
                     info.setAuthor(author.getText().toString());
                     info.setEdition(edition.getText().toString());
@@ -333,20 +347,67 @@ bookInfoManager.delete(Integer.parseInt(del_id));
             }
         });
     }
+    public void displaySalesInfoDialog(final int position) {
 
-   /* private void updateNote(String note, int position) {
-        Note n = notesList.get(position);
-        // updating note text
-        n.setNote(note);
+//        Toast.makeText(context,"hhh",Toast.LENGTH_LONG).show();
+       final Dialog salesDiloag = new Dialog(context);
+        salesDiloag.setTitle("SQLite Database");
+        salesDiloag.setContentView(R.layout.activity_sales_info);
 
-        // updating note in db
-        db.updateNote(n);
 
-        // refreshing the list
-        notesList.set(position, n);
-        mAdapter.notifyItemChanged(position);
+        BookInfo info = bookInfoLists.get(position);
+        bookInfoManager = new BookInfoManager(context);
+        salesInfoManager = new SalesInfoManager(context);
+       final int bookInfoId = info.getId();
 
-        toggleEmptyNotes();
-    }*/
+       final EditText salesQty = salesDiloag.findViewById(R.id.txtSalesQty);
+        final EditText salesPrice = salesDiloag.findViewById(R.id.txtSalesPrice);
+        final EditText salesDate = salesDiloag.findViewById(R.id.txtSalesDate);
+        final  EditText bookInfoName = salesDiloag.findViewById(R.id.txtBookName);
+        Button saveSales = salesDiloag.findViewById(R.id.btnSalesSave);
+        Button cancelSales = salesDiloag.findViewById(R.id.btnSalesCancel);
+        bookInfoName.setText(info.getBookName());
+        salesPrice.setText(info.getPrice());
+
+        salesDiloag.show();
+
+        saveSales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(bookInfoName.getText())) {
+                    bookInfoName.setError("Book name is required!");
+                }
+                if (TextUtils.isEmpty(salesQty.getText())) {
+                    salesQty.setError("Sales Quantity is required!");
+                }
+                if (TextUtils.isEmpty(salesPrice.getText())) {
+                    salesPrice.setError("Sales Price is required!");
+                }
+                if (TextUtils.isEmpty(salesDate.getText())) {
+                    salesDate.setError("Sales Date is required!");
+                } else {
+                   BookSales bookSales = new BookSales();
+                    bookSales.setSalesQty(Integer.valueOf(salesQty.getText().toString()));
+                    bookSales.setSalesPrice(salesPrice.getText().toString());
+                    bookSales.setSalesDate(salesDate.getText().toString());
+                    bookSales.setBookInfoId(bookInfoId);
+                    long insertedRow = salesInfoManager.addSalesInfo(bookSales);
+                    if (insertedRow > 0) {
+                        salesDiloag.dismiss();
+                    } else {
+                        Toast.makeText(context, "something went wrong!!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        cancelSales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salesDiloag.cancel();
+            }
+        });
+    }
+
 
 }

@@ -14,12 +14,12 @@
       android:layout_height="wrap_content"
       android:orientation="vertical"
       android:gravity="center">
-      <EditText
+      <!--<EditText
           android:id="@+id/store_name"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/enter_store_name"
-          android:inputType="text"/>
+          android:inputType="text"/>-->
       <EditText
           android:id="@+id/user_name"
           android:layout_width="match_parent"
@@ -58,27 +58,5 @@
            android:onClick="signUp"
            android:textAllCaps="false"/>
    </LinearLayout>
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="16sp"
-    android:text="@string/add_publisher_info"
-    android:onClick="gotoPublisherInfo"
-    android:textAllCaps="false"/>
-
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="16sp"
-    android:text="@string/add_book_info"
-    android:onClick="gotoBookInfo"
-    android:textAllCaps="false"/>
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="16sp"
-    android:text="@string/book_list"
-    android:onClick="bookInfoList"
-    android:textAllCaps="false"/>
 
 </LinearLayout>

@@ -83,11 +83,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_marginRight="10dp">
                 <ImageView
                     android:id="@+id/imgDlt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tooltipText="Delete"
                     android:src="@drawable/ic_delete"
                     android:background="#999"
                     android:onClick="deleteItem"
@@ -96,7 +98,16 @@
                     android:id="@+id/imgEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tooltipText="Edit"
                     android:src="@drawable/ic_edit_black_24dp"
+                    android:background="#999"
+                    />
+                <ImageView
+                    android:id="@+id/imgSls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tooltipText="Add Sales info"
+                    android:src="@drawable/ic_add_sales_24dp"
                     android:background="#999"
                     />
             </LinearLayout>

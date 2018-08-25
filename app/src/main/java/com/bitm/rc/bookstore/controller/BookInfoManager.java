@@ -130,4 +130,32 @@ public boolean delete(int id)
         return bookInfos;
     }
 /**********************end***************************/
+
+public String getTotalStock(){
+    sqLiteDatabase=databaseHelper.getReadableDatabase();
+//    int totalStock=0;
+    String selectQuery="select SUM("+DatabaseHelper.QTY+") from "+DatabaseHelper.TABLE_NAME_BOOK_INFO;
+//    String selectQuery="select SUM(quantity) from "+DatabaseHelper.TABLE_NAME_BOOK_INFO;
+    Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
+    cursor.moveToFirst();
+    int totalStock= cursor.getInt(0);
+    return "Total Stock "+totalStock;
+}
+public String getTotalItem(){
+    sqLiteDatabase=databaseHelper.getReadableDatabase();
+    String selectQuery="select * from "+DatabaseHelper.TABLE_NAME_BOOK_INFO;
+    Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
+    int totalItem = cursor.getCount();
+    cursor.close();
+    return "Total Item " +totalItem;
+}
+
+   /* public int getProfilesCount() {
+        String countQuery = "SELECT  * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
+    }*/
 }

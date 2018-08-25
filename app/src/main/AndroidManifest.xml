@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.bitm.rc.bookstore.ProfileActivity" />
         <activity
             android:name="com.bitm.rc.bookstore.UserInfoActivity"
             android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
@@ -25,8 +26,8 @@
         <activity
             android:name="com.bitm.rc.bookstore.PublisherActivity"
             android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
-        <activity android:name="com.bitm.rc.bookstore.ProfileActivity" />
-        <activity android:name="com.bitm.rc.bookstore.BookInfoListActivity"></activity>
+        <activity android:name="com.bitm.rc.bookstore.BookInfoListActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"></activity>
     </application>
 
 </manifest>

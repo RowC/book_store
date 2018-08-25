@@ -30,6 +30,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COUNTRY = "country";
     public static final String LAN = "lan";
 
+    public static final String TABLE_NAME_SALES_INFO = "sales_info";
+    public static final String SALES_ID = "sales_id";
+    public static final String SALES_QTY = "sales_qty";
+    public static final String SALES_PRICE = "sales_price";
+    public static final String SALES_DATE = "sales_date";
+    public static final String BOOK_INFO_ID = "book_info_id";
+
+
     public static final String CREATE_USER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
             "" + COLUMN_FULL_NAME + " text," + COLUMN_USER_NAME + " text," + COLUMN_PASSWORD + " text,CONSTRAINT unique_user_name UNIQUE (" + COLUMN_USER_NAME + "));";
 
@@ -38,6 +46,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_BOOK_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_BOOK_INFO + " (" + BOOK_ID + " integer primary key autoincrement," +
             "" + BOOK_NAME + " text," + AUTHOR_NAME + " text," + EDITION + " text," + PUBLISHER + " text," + QTY + " text," + UNIT_PRICE + " text," + COUNTRY + " text," + LAN + " text);";
+
+    public static final String CREATE_SALES_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_SALES_INFO + " (" + SALES_ID + " integer primary key autoincrement," +
+            "" + SALES_QTY + " integer," + SALES_PRICE + " text," + SALES_DATE + " text," + BOOK_INFO_ID + " integer);";
 
 
     public DatabaseHelper(Context context) {
@@ -53,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_USER_QUERY);
         sqLiteDatabase.execSQL(CREATE_PUBLISHER_QUERY);
         sqLiteDatabase.execSQL(CREATE_BOOK_QUERY);
+        sqLiteDatabase.execSQL(CREATE_SALES_QUERY);
     }
 
     @Override
@@ -60,7 +72,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // on upgrade drop older tables
        /* sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PUBLISHER_INFO);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOK_INFO);*/
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOK_INFO);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_SALES_QUERY);*/
         // create new tables
         onCreate(sqLiteDatabase);
     }
