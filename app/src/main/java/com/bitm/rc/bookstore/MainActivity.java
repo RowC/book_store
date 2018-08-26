@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = helper.getWritableDatabase();
         String[] columns = {"user_name", "password"};
         String[] cValues = {userName.getText().toString(), password.getText().toString()};
-        Cursor cursor = db.query(helper.TABLE_NAME, columns, "user_name = ? AND password = ?", cValues, null, null, null);
+        Cursor cursor = db.query(helper.TABLE_NAME_USER_INFO, columns, "user_name = ? AND password = ?", cValues, null, null, null);
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 Intent intent = new Intent(this, ProfileActivity.class);

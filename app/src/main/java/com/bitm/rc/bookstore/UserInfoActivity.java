@@ -1,9 +1,11 @@
 package com.bitm.rc.bookstore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bitm.rc.book_store.R;
@@ -14,6 +16,7 @@ public class UserInfoActivity extends AppCompatActivity {
 EditText fullName;
 EditText userName;
 EditText password;
+TextView mgs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,8 @@ EditText password;
         fullName=findViewById(R.id.full_name);
         userName=findViewById(R.id.user_name);
         password=findViewById(R.id.password);
+        mgs=findViewById(R.id.tvErrorMsg);
+        mgs.setVisibility(View.GONE);
     }
 
     public void submit(View view) {
@@ -30,9 +35,22 @@ EditText password;
         userInfo.setPassword(password.getText().toString());
         UserInfoManager userInfoManager= new UserInfoManager(this);
         long insertedRow=userInfoManager.addUser(userInfo);
-        if(insertedRow>0){
-            Toast.makeText(this, ""+insertedRow, Toast.LENGTH_SHORT).show();
+        if(insertedRow>1){
+            mgs.setVisibility(View.VISIBLE);
+            mgs.setText("One user already exist. You can not create more than one user!!!");
+            Toast.makeText(this, "One user already exist. You can not create more than one user!!!", Toast.LENGTH_SHORT).show();
+        }
+        else if(insertedRow<1){
+            Intent intent = new Intent(this,SucessActivity.class);
+            intent.putExtra("userFullName","Welcome "+fullName.getText().toString());
+            intent.putExtra("userName","Your user name is "+userName.getText().toString());
+            intent.putExtra("and","&");
+            intent.putExtra("password","Password is "+password.getText().toString());
+            startActivity(intent);
+            return;
         }else{
+            mgs.setVisibility(View.VISIBLE);
+            mgs.setText("something went wrong!!!");
             Toast.makeText(this, "something went wrong!!!", Toast.LENGTH_SHORT).show();
         }
     }

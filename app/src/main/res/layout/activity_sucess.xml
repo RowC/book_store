@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bitm.rc.bookstore.SucessActivity">
+    tools:context="com.bitm.rc.bookstore.SucessActivity"
+    android:gravity="center"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tvAnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/tvPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go your home page"
+        android:background="@color/colorAccent"
+        android:textColor="#fff"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:onClick="gotoHome"
+        android:textAllCaps="false"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

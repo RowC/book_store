@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "book_store";
-    public static final String TABLE_NAME = "user_info";
+    public static final String TABLE_NAME_USER_INFO = "user_info";
     public static final Integer VERSION = 1;
     public static final String COLUMN_USER_ID = "id";
     public static final String COLUMN_FULL_NAME = "full_name";
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String BOOK_INFO_ID = "book_info_id";
 
 
-    public static final String CREATE_USER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
+    public static final String CREATE_USER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_USER_INFO + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
             "" + COLUMN_FULL_NAME + " text," + COLUMN_USER_NAME + " text," + COLUMN_PASSWORD + " text,CONSTRAINT unique_user_name UNIQUE (" + COLUMN_USER_NAME + "));";
 
     public static final String CREATE_PUBLISHER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_PUBLISHER_INFO + " (" + PUBLISHER_ID + " integer primary key autoincrement," +
@@ -70,10 +70,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         // on upgrade drop older tables
-       /* sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_USER_INFO);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_PUBLISHER_INFO);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_BOOK_INFO);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CREATE_SALES_QUERY);*/
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_SALES_INFO);
         // create new tables
         onCreate(sqLiteDatabase);
     }
