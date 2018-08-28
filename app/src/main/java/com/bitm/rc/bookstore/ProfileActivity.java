@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bitm.rc.bookstore.PubliserInfoListActivity;
 import com.bitm.rc.book_store.R;
 import com.bitm.rc.bookstore.controller.BookInfoManager;
 import com.bitm.rc.bookstore.controller.SalesInfoManager;
@@ -40,6 +41,10 @@ SalesInfoManager salesInfoManager  =new SalesInfoManager(this);
     }
     public void bookInfoList(View view) {
         Intent intent = new Intent(this,BookInfoListActivity.class);
+        startActivity(intent);
+    }
+    public void publisherInfoList(View view) {
+        Intent intent = new Intent(this,PubliserInfoListActivity.class);
         startActivity(intent);
     }
 }
