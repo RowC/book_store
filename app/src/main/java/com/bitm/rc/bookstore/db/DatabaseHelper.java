@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String SALES_QTY = "sales_qty";
     public static final String SALES_PRICE = "sales_price";
     public static final String SALES_DATE = "sales_date";
-    public static final String BOOK_INFO_ID = "book_info_id";
+    public static final String BOOK_INFO_NAME = "book_info_name";
 
 
     public static final String CREATE_USER_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_USER_INFO + " (" + COLUMN_USER_ID + " integer primary key autoincrement," +
@@ -47,8 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_BOOK_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_BOOK_INFO + " (" + BOOK_ID + " integer primary key autoincrement," +
             "" + BOOK_NAME + " text," + AUTHOR_NAME + " text," + EDITION + " text," + PUBLISHER + " text," + QTY + " text," + UNIT_PRICE + " text," + COUNTRY + " text," + LAN + " text);";
 
-    public static final String CREATE_SALES_QUERY = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_SALES_INFO + " (" + SALES_ID + " integer primary key autoincrement," +
-            "" + SALES_QTY + " integer," + SALES_PRICE + " text," + SALES_DATE + " text," + BOOK_INFO_ID + " integer);";
+    public static final String CREATE_SALES_QUERY = "CREATE TABLE " + TABLE_NAME_SALES_INFO + " (" + SALES_ID + " integer primary key autoincrement," +
+            "" + SALES_QTY + " integer," + SALES_PRICE + " text," + SALES_DATE + " text," + BOOK_INFO_NAME + " text);";
 
 
     public DatabaseHelper(Context context) {
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         /*******drop table*****/
-//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + CREATE_USER_QUERY + "'");
+//        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_SALES_INFO + "");
         /******end*******/
         // creating required tables
         sqLiteDatabase.execSQL(CREATE_USER_QUERY);

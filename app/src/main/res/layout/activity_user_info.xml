@@ -9,6 +9,18 @@
     android:layout_gravity="center_vertical"
     tools:context="com.bitm.rc.bookstore.UserInfoActivity">
 
+    <TextView
+        android:id="@+id/tvEditTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_user_information"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="@color/colorAccent"/>
+
+        />
     <EditText
         android:id="@+id/full_name"
         android:layout_width="match_parent"
@@ -32,21 +44,42 @@
         android:inputType="textPassword"
         android:gravity="center" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textAllCaps="false"
-        android:onClick="submit"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:padding="10dp">
+       <Button
+           android:id="@+id/btnUserSave"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/submit"
+           android:textSize="20sp"
+           android:padding="10dp"
+           android:layout_marginBottom="15dp"
+           android:layout_gravity="center"
+           android:layout_marginTop="20dp"
+           android:textAllCaps="false"
+           android:onClick="submit"/>
+       <Button
+           android:id="@+id/btnUserCancel"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/cancel"
+           android:textSize="20sp"
+           android:padding="10dp"
+           android:layout_marginBottom="15dp"
+           android:layout_gravity="center"
+           android:layout_marginTop="20dp"
+           android:textAllCaps="false"/>
+   </LinearLayout>
 
     <TextView
         android:id="@+id/tvErrorMsg"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textSize="20sp"

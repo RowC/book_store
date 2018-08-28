@@ -16,13 +16,13 @@
             android:orientation="vertical"
             android:layout_margin="10dp">
 
-            <EditText
+          <!--  <EditText
                 android:id="@+id/book_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_book_name"
                 android:inputType="text"
-                android:visibility="visible" />
+                android:visibility="visible" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,8 +38,9 @@
                     android:id="@+id/book_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_book_name"
+                    android:gravity="center"
                     android:inputType="text" />
+                <!--android:hint="@string/enter_book_name"-->
             </LinearLayout>
 
             <LinearLayout
@@ -56,8 +57,10 @@
                     android:id="@+id/author_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_author_name"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:gravity="center"/>
+
+                <!--android:hint="@string/enter_author_name"-->
             </LinearLayout>
 
             <LinearLayout
@@ -74,8 +77,9 @@
                     android:id="@+id/edition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_edition"
+                    android:gravity="center"
                     android:inputType="text" />
+                <!--android:hint="@string/enter_edition"-->
             </LinearLayout>
 
             <LinearLayout
@@ -96,9 +100,9 @@
                     android:layout_marginLeft="5dp"
                     android:ellipsize="marquee"
                     android:gravity="center"
-                    android:hint="@string/enter_publisher_name"
                     android:padding="10dp"
                     android:spinnerMode="dropdown" />
+                <!--android:hint="@string/enter_publisher_name"-->
             </LinearLayout>
 
 
@@ -116,8 +120,9 @@
                     android:id="@+id/qty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_book_quantity"
+                    android:gravity="center"
                     android:inputType="text" />
+                <!--android:hint="@string/enter_book_quantity"-->
             </LinearLayout>
 
 
@@ -135,8 +140,9 @@
                     android:id="@+id/price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_price"
+                    android:gravity="center"
                     android:inputType="text" />
+                <!--android:hint="@string/enter_price"-->
             </LinearLayout>
 
 
@@ -154,8 +160,9 @@
                     android:id="@+id/language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_language"
+                    android:gravity="center"
                     android:inputType="text" />
+                <!--android:hint="@string/enter_language"-->
             </LinearLayout>
 
 
@@ -206,7 +213,7 @@
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
                    android:padding="15dp"
-                   android:text="Cancel"
+                   android:text="@string/cancel"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
                <Button
@@ -216,7 +223,7 @@
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
                    android:padding="15dp"
-                   android:text="Update"
+                   android:text="@string/update"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
            </LinearLayout>

@@ -30,16 +30,16 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 public class BookInfoListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private RecyclerView recyclerView;
     private BookListAdapter adapter;
-    BookInfoManager bookInfoManager;
+    BookInfoManager bookInfoManager = new BookInfoManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_info_list);
-        recyclerView = findViewById(R.id.my_recycler_view);
+        recyclerView = findViewById(R.id.book_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        bookInfoManager = new BookInfoManager(this);
+//        bookInfoManager = new BookInfoManager(this);
         ArrayList<BookInfo> bookInfoList = bookInfoManager.getBookList();
 //        ArrayList<String>listForDisplay=new ArrayList<>();
 

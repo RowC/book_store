@@ -29,7 +29,12 @@
         <activity
             android:name="com.bitm.rc.bookstore.BookInfoListActivity"
             android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
-        <activity android:name="com.bitm.rc.bookstore.SucessActivity"></activity>
+        <activity android:name="com.bitm.rc.bookstore.SucessActivity" />
+        <activity
+            android:name="com.bitm.rc.bookstore.SalesInfoListActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity android:name="com.bitm.rc.bookstore.UserInfoListActivity"
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" ></activity>
     </application>
 
 </manifest>

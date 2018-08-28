@@ -13,15 +13,18 @@ import com.bitm.rc.bookstore.model.PublisherInfo;
 import java.util.Date;
 
 public class PublisherActivity extends AppCompatActivity {
-EditText name;
-EditText address;
-EditText date;
+    EditText name;
+    EditText address;
+    EditText date;
+
+    PublisherInfoManager infoManager = new PublisherInfoManager(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_publisher);
-        name= findViewById(R.id.publisher_name);
-        address= findViewById(R.id.publisher_address);
+        name = findViewById(R.id.publisher_name);
+        address = findViewById(R.id.publisher_address);
     }
 
     public void add(View view) {
@@ -29,11 +32,10 @@ EditText date;
         publisherInfo.setName(name.getText().toString());
         publisherInfo.setAddress(address.getText().toString());
         publisherInfo.setDate(new Date());
-        PublisherInfoManager infoManager= new PublisherInfoManager(this);
-        long insertedRow=infoManager.addPublisher(publisherInfo);
-        if(insertedRow>0){
-            Toast.makeText(this, ""+insertedRow, Toast.LENGTH_SHORT).show();
-        }else{
+        long insertedRow = infoManager.addPublisher(publisherInfo);
+        if (insertedRow > 0) {
+            Toast.makeText(this, "" + insertedRow, Toast.LENGTH_SHORT).show();
+        } else {
             Toast.makeText(this, "something went wrong!!!", Toast.LENGTH_SHORT).show();
         }
     }

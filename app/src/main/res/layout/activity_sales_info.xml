@@ -46,13 +46,13 @@
            android:id="@+id/btnSalesSave"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Save" />
+           android:text="@string/save" />
 
        <Button
            android:id="@+id/btnSalesCancel"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="cancel" />
+           android:text="@string/cancel" />
    </LinearLayout>
 
 </LinearLayout>

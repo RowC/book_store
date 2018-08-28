@@ -39,6 +39,76 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         this.context = context;
     }
 
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_list, parent, false);
+        return new ViewHolder(v);
+    }
+
+    @Override
+//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        BookInfo bookInfo = bookInfoLists.get(position);
+        if(bookInfo!=null){
+            holder.textViewbookId.setText("Book Id : " + bookInfo.getId());
+            holder.textViewBookName.setText("Book Name : " + bookInfo.getBookName());
+            holder.textViewAuthorName.setText("Author : " + bookInfo.getAuthor());
+            holder.textViewEditionName.setText("Edition : " + bookInfo.getEdition());
+            holder.textViewPublisher.setText("Publisher's : " + bookInfo.getPublisherInfoList());
+            holder.textViewQuantity.setText("Quantity : " + bookInfo.getQuantity().toString());
+            holder.textViewPrice.setText("Price : " + bookInfo.getPrice());
+            holder.textViewLanguage.setText("Language : " + bookInfo.getLanguage());
+            holder.setListener();
+        }
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return bookInfoListsFull.size();
+    }
+
+
+    @Override
+    public Filter getFilter() {
+        return bookFilter;
+    }
+
+    private Filter bookFilter = new Filter() {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<BookInfo> filterList = new ArrayList<>();
+            if (charSequence == null || charSequence.length() == 0) {
+                filterList.addAll(bookInfoLists);
+            } else {
+                String filterPatern = charSequence.toString().toLowerCase().trim();
+                for (BookInfo bookInfo : bookInfoListsFull) {
+                    if (bookInfo.getBookName().toLowerCase().contains(filterPatern)) {
+                        filterList.add(bookInfo);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+           /* bookInfoLists.clear();
+            bookInfoListsFull.addAll((List) filterResults.values);*/
+
+            bookInfoListsFull.clear();
+            bookInfoListsFull.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
+
     public void removeItem(int position) {
         BookInfo info = bookInfoListsFull.get(position);
         bookInfoManager = new BookInfoManager(context);
@@ -53,7 +123,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 //        bookInfoListsFull.clear();
         this.notifyItemRangeChanged(position, bookInfoListsFull.size());
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         //    public class ViewHolder extends RecyclerView.ViewHolder{
@@ -120,68 +189,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         }*/
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_list, parent, false);
-        return new ViewHolder(v);
-    }
-
-    @Override
-//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        BookInfo bookInfo = bookInfoLists.get(position);
-        holder.textViewbookId.setText("Book Id : " + bookInfo.getId());
-        holder.textViewBookName.setText("Book Name : " + bookInfo.getBookName());
-        holder.textViewAuthorName.setText("Author : " + bookInfo.getAuthor());
-        holder.textViewEditionName.setText("Edition : " + bookInfo.getEdition());
-        holder.textViewPublisher.setText("Publisher's : " + bookInfo.getPublisherInfoList());
-        holder.textViewQuantity.setText("Quantity : " + bookInfo.getQuantity().toString());
-        holder.textViewPrice.setText("Price : " + bookInfo.getPrice());
-        holder.textViewLanguage.setText("Language : " + bookInfo.getLanguage());
-        holder.setListener();
-    }
-
-    @Override
-    public int getItemCount() {
-        return bookInfoListsFull.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return bookFilter;
-    }
-
-    private Filter bookFilter = new Filter() {
-
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<BookInfo> filterList = new ArrayList<>();
-            if (charSequence == null || charSequence.length() == 0) {
-                filterList.addAll(bookInfoListsFull);
-            } else {
-                String filterPatern = charSequence.toString().toLowerCase().trim();
-                for (BookInfo bookInfo : bookInfoListsFull) {
-                    if (bookInfo.getBookName().toLowerCase().contains(filterPatern)) {
-                        filterList.add(bookInfo);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filterList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            bookInfoLists.clear();
-            bookInfoLists.addAll((List) filterResults.values);
-
-           /* bookInfoListsFull.clear();
-            bookInfoListsFull.addAll((List) filterResults.values);*/
-            notifyDataSetChanged();
-        }
-    };
 
 
 
@@ -265,7 +272,7 @@ bookInfoManager.delete(Integer.parseInt(del_id));
         String bookQty = info.getQuantity().toString();
         String bookPrice = info.getPrice();
         String bookLanguage = info.getLanguage();
-       final EditText bookId = d.findViewById(R.id.book_id);
+//       final EditText bookId = d.findViewById(R.id.book_id);
         final EditText bookTxt = d.findViewById(R.id.book_name);
         final EditText author = d.findViewById(R.id.author_name);
         final  EditText edition = d.findViewById(R.id.edition);
@@ -277,7 +284,7 @@ bookInfoManager.delete(Integer.parseInt(del_id));
         Button cancel = d.findViewById(R.id.cancelBtn);
         save.setVisibility(View.GONE);
         cancel.setVisibility(View.VISIBLE);
-        bookId.setText(id);
+//        bookId.setText(id);
         bookTxt.setText(bookName.toString());
         author.setText(bookAuthor);
         edition.setText(bookEdition);
@@ -310,9 +317,6 @@ bookInfoManager.delete(Integer.parseInt(del_id));
                 if (TextUtils.isEmpty(quantity.getText())) {
                     quantity.setError("Quantity is required!");
                 }
-       /* if(TextUtils.isEmpty(publisher.getSelectedItem().toString())){
-            publisher.setError( "Quantity is required!" );
-        }*/
                 if (TextUtils.isEmpty(price.getText())) {
                     price.setError("Price is required!");
                 } else {
@@ -358,8 +362,9 @@ bookInfoManager.delete(Integer.parseInt(del_id));
         BookInfo info = bookInfoLists.get(position);
         bookInfoManager = new BookInfoManager(context);
         salesInfoManager = new SalesInfoManager(context);
-       final int bookInfoId = info.getId();
+//       final int bookInfoId = info.getId();
 
+       final EditText bookInfoId = salesDiloag.findViewById(R.id.txtBookName);
        final EditText salesQty = salesDiloag.findViewById(R.id.txtSalesQty);
         final EditText salesPrice = salesDiloag.findViewById(R.id.txtSalesPrice);
         final EditText salesDate = salesDiloag.findViewById(R.id.txtSalesDate);
@@ -390,7 +395,7 @@ bookInfoManager.delete(Integer.parseInt(del_id));
                     bookSales.setSalesQty(Integer.valueOf(salesQty.getText().toString()));
                     bookSales.setSalesPrice(salesPrice.getText().toString());
                     bookSales.setSalesDate(salesDate.getText().toString());
-                    bookSales.setBookInfoId(bookInfoId);
+                    bookSales.setBookInfoId(bookInfoId.getText().toString());
                     long insertedRow = salesInfoManager.addSalesInfo(bookSales);
                     if (insertedRow > 0) {
                         salesDiloag.dismiss();

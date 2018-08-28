@@ -31,7 +31,7 @@ public class SalesInfoManager {
         contentValues.put(databaseHelper.SALES_QTY, bookSales.getSalesQty());
         contentValues.put(databaseHelper.SALES_PRICE, bookSales.getSalesPrice());
         contentValues.put(databaseHelper.SALES_DATE, bookSales.getSalesDate());
-        contentValues.put(databaseHelper.BOOK_INFO_ID, bookSales.getBookInfoId());
+        contentValues.put(databaseHelper.BOOK_INFO_NAME, bookSales.getBookInfoId());
         long insertRow = sqLiteDatabase.insert(databaseHelper.TABLE_NAME_SALES_INFO,null,contentValues);
         sqLiteDatabase.close();
         return insertRow;
@@ -46,7 +46,7 @@ public class SalesInfoManager {
         contentValues.put(databaseHelper.SALES_QTY, bookSales.getSalesQty());
         contentValues.put(databaseHelper.SALES_PRICE, bookSales.getSalesPrice());
         contentValues.put(databaseHelper.SALES_DATE, bookSales.getSalesDate());
-        contentValues.put(databaseHelper.BOOK_INFO_ID, bookSales.getBookInfoId());
+        contentValues.put(databaseHelper.BOOK_INFO_NAME, bookSales.getBookInfoId());
        long insertRow =   sqLiteDatabase.update(DatabaseHelper.TABLE_NAME_SALES_INFO, contentValues, DatabaseHelper.SALES_ID + " = ?",
                 new String[]{String.valueOf(bookSales.getId())});
         sqLiteDatabase.close();
@@ -83,14 +83,8 @@ public boolean delete(int id)
                 int salesQuantity=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.SALES_QTY));
                 String salesPrice=cursor.getString(cursor.getColumnIndex(DatabaseHelper.SALES_PRICE));
                 String salesDate=cursor.getString(cursor.getColumnIndex(DatabaseHelper.SALES_DATE));
-                int bookInfoId=cursor.getInt(cursor.getColumnIndex(DatabaseHelper.BOOK_INFO_ID));
+                String bookInfoId=cursor.getString(cursor.getColumnIndex(DatabaseHelper.BOOK_INFO_NAME));
                 BookSales bookSales=new BookSales(id,salesQuantity,salesPrice,salesDate,bookInfoId);
-               /* if(!bookInfo.equals(null)){
-
-                }else {
-                    String [] ss = {"No Record Found"};
-                    bookInfos.add(ss);
-                }*/
                 bookSalesArrayList.add(bookSales);
             }while(cursor.moveToNext());
         }
@@ -98,12 +92,12 @@ public boolean delete(int id)
     }
 /**********************end***************************/
 
-public String getTotalSales(){
+public int getTotalSales(){
     sqLiteDatabase=databaseHelper.getReadableDatabase();
     String selectQuery="select SUM("+DatabaseHelper.SALES_QTY+") from "+DatabaseHelper.TABLE_NAME_SALES_INFO;
     Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
     cursor.moveToFirst();
     int totalSales= cursor.getInt(0);
-    return "Total Sales "+totalSales;
+    return totalSales;
 }
 }

@@ -2,15 +2,15 @@ package com.bitm.rc.bookstore.model;
 
 public class BookSales {
     private Integer id;
-    private Integer bookInfoId;
     private Integer salesQty;
     private String salesPrice;
     private String salesDate;
+    private String bookInfoId;
 
     public BookSales() {
     }
 
-    public BookSales(Integer id, Integer salesQty, String salesPrice, String salesDate, Integer bookInfoId) {
+    public BookSales(Integer id, Integer salesQty, String salesPrice, String salesDate, String bookInfoId) {
         this.id = id;
         this.bookInfoId = bookInfoId;
         this.salesQty = salesQty;
@@ -26,11 +26,11 @@ public class BookSales {
         this.id = id;
     }
 
-    public Integer getBookInfoId() {
+    public String getBookInfoId() {
         return bookInfoId;
     }
 
-    public void setBookInfoId(Integer bookInfoId) {
+    public void setBookInfoId(String bookInfoId) {
         this.bookInfoId = bookInfoId;
     }
 

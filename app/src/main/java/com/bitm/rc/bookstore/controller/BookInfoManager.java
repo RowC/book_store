@@ -131,7 +131,7 @@ public boolean delete(int id)
     }
 /**********************end***************************/
 
-public String getTotalStock(){
+public int getTotalStock(){
     sqLiteDatabase=databaseHelper.getReadableDatabase();
 //    int totalStock=0;
     String selectQuery="select SUM("+DatabaseHelper.QTY+") from "+DatabaseHelper.TABLE_NAME_BOOK_INFO;
@@ -139,7 +139,7 @@ public String getTotalStock(){
     Cursor cursor = sqLiteDatabase.rawQuery(selectQuery, null);
     cursor.moveToFirst();
     int totalStock= cursor.getInt(0);
-    return "Total Stock "+totalStock;
+    return totalStock;
 }
 public String getTotalItem(){
     sqLiteDatabase=databaseHelper.getReadableDatabase();

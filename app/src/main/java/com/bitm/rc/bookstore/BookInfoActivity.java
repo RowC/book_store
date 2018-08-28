@@ -37,26 +37,14 @@ public class BookInfoActivity extends AppCompatActivity {
         edition = findViewById(R.id.edition);
         quantity = findViewById(R.id.qty);
         price = findViewById(R.id.price);
-//        country = findViewById(R.id.country);
         language = findViewById(R.id.language);
         publisher = findViewById(R.id.publisher);
         addItemsOnSpinner();
-
-
-
 
         edit = findViewById(R.id.editBtn);
         cancel = findViewById(R.id.cancelBtn);
         edit.setVisibility(View.GONE);
         cancel.setVisibility(View.GONE);
-        /*playButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //when play is clicked show stop button and hide play button
-                playButton.setVisibility(View.GONE);
-                stopButton.setVisibility(View.VISIBLE);
-            }
-        });*/
     }
     public void add(View view) {
         BookInfo bookInfo = new BookInfo();
@@ -70,9 +58,6 @@ public class BookInfoActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(quantity.getText())){
             quantity.setError( "Quantity is required!" );
         }
-       /* if(TextUtils.isEmpty(publisher.getSelectedItem().toString())){
-            publisher.setError( "Quantity is required!" );
-        }*/
         if(TextUtils.isEmpty(price.getText())){
             price.setError( "Price is required!" );
         }
@@ -83,7 +68,6 @@ public class BookInfoActivity extends AppCompatActivity {
             bookInfo.setPublisherInfoList(publisher.getSelectedItem().toString());
             bookInfo.setQuantity(Integer.valueOf(quantity.getText().toString()));
             bookInfo.setPrice(price.getText().toString());
-//            bookInfo.setCountry(country.getText().toString());
             bookInfo.setLanguage(language.getText().toString());
             long insertedRow = bookInfoManager.addBookInfo(bookInfo);
             if (insertedRow > 0) {
@@ -92,10 +76,9 @@ public class BookInfoActivity extends AppCompatActivity {
                 Toast.makeText(this, "something went wrong!!!", Toast.LENGTH_SHORT).show();
             }
         }
-
-
     }
     /*******Spinner*********/
+
     public void addItemsOnSpinner() {
         publisher = findViewById(R.id.publisher);
 //        bookInfoManager = new BookInfoManager(this);
@@ -108,9 +91,6 @@ public class BookInfoActivity extends AppCompatActivity {
         publisher.setAdapter(dataAdapter);
     }
 
-
     /**********end**************/
-
-
 
 }
