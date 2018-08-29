@@ -17,25 +17,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.bitm.rc.bookstore.ProfileActivity" />
+        <activity android:name="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Dashboard"
+            />
         <activity
             android:name="com.bitm.rc.bookstore.UserInfoActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Sign up"/>
         <activity
             android:name="com.bitm.rc.bookstore.BookInfoActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Book information form"/>
         <activity
             android:name="com.bitm.rc.bookstore.PublisherActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Publisher information form"/>
         <activity
             android:name="com.bitm.rc.bookstore.BookInfoListActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Book information list"/>
         <activity android:name="com.bitm.rc.bookstore.SucessActivity" />
         <activity
             android:name="com.bitm.rc.bookstore.SalesInfoListActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" />
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="Sales information list"/>
         <activity android:name="com.bitm.rc.bookstore.UserInfoListActivity"
-            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity" ></activity>
+            android:parentActivityName="com.bitm.rc.bookstore.ProfileActivity"
+            android:label="User Details"></activity>
     </application>
 
 </manifest>
