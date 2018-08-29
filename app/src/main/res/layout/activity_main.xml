@@ -7,6 +7,7 @@
     tools:context="com.bitm.rc.bookstore.MainActivity"
     android:orientation="vertical"
     android:layout_gravity="center"
+    android:background="#7ca9f1"
     android:gravity="center">
 
   <LinearLayout
@@ -25,12 +26,18 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/enter_user_name"
+          android:textColorHint="#fffdfd"
+          android:textStyle="bold"
+          android:textAlignment="center"
           android:inputType="text"/>
       <EditText
           android:id="@+id/password"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="@string/enter_your_password"
+          android:textColorHint="#fffdfd"
+          android:textStyle="bold"
+          android:textAlignment="center"
           android:inputType="textPassword"/>
 
   </LinearLayout>
@@ -44,18 +51,25 @@
        <Button
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:background="#0c1fae"
            android:padding="10dp"
            android:textSize="16sp"
            android:text="@string/sign_in"
+           android:textStyle="bold"
+           android:textColor="#fdfcfc"
            android:onClick="signIn"
            android:textAllCaps="false"/>
        <Button
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:layout_marginLeft="5dp"
+           android:background="#0c1fae"
            android:padding="10dp"
            android:textSize="16sp"
            android:text="@string/sign_up"
            android:onClick="signUp"
+           android:textStyle="bold"
+           android:textColor="#fdfcfc"
            android:textAllCaps="false"/>
    </LinearLayout>
 

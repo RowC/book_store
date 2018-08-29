@@ -14,7 +14,6 @@ public class ProfileActivity extends AppCompatActivity {
 TextView totalStock;
 TextView totalItem;
 TextView totalSales;
-TextView remainingStock;
 BookInfoManager bookInfoManager  =new BookInfoManager(this);
 SalesInfoManager salesInfoManager  =new SalesInfoManager(this);
     @Override
@@ -24,12 +23,10 @@ SalesInfoManager salesInfoManager  =new SalesInfoManager(this);
         totalStock=findViewById(R.id.totalStockTv);
         totalItem=findViewById(R.id.totalItemTv);
         totalSales=findViewById(R.id.totalSalesTv);
-        remainingStock=findViewById(R.id.totalRemainingTv);
 
-        totalStock.setText("Total Stock "+bookInfoManager.getTotalStock());
+        totalStock.setText(bookInfoManager.getTotalStock());
         totalItem.setText(bookInfoManager.getTotalItem());
-        totalSales.setText( "Total Sales "+salesInfoManager.getTotalSales());
-        remainingStock.setText("Remaining Stock "+(bookInfoManager.getTotalStock()-salesInfoManager.getTotalSales()));
+//        totalSales.setText(salesInfoManager.getTotalSales());
 
     }
 
@@ -43,14 +40,6 @@ SalesInfoManager salesInfoManager  =new SalesInfoManager(this);
     }
     public void bookInfoList(View view) {
         Intent intent = new Intent(this,BookInfoListActivity.class);
-        startActivity(intent);
-    }
-    public void salesInfoList(View view) {
-        Intent intent = new Intent(this,SalesInfoListActivity.class);
-        startActivity(intent);
-    }
-    public void userInfoList(View view) {
-        Intent intent = new Intent(this,UserInfoListActivity.class);
         startActivity(intent);
     }
 }

@@ -19,10 +19,4 @@
     <string name="enter_store_name">Enter Store Name</string>
     <string name="submit">Submit</string>
     <string name="book_list">Book List</string>
-    <string name="sales_details">Sales Details</string>
-    <string name="user_details">User details</string>
-    <string name="cancel">cancel</string>
-    <string name="save">Save</string>
-    <string name="update">Update</string>
-    <string name="edit_user_information">Edit User Information</string>
 </resources>
