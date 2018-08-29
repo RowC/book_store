@@ -32,7 +32,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Book name" />
+                    android:text="@string/book_name" />
 
                 <EditText
                     android:id="@+id/book_name"
@@ -50,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Author name" />
+                    android:text="@string/author_name" />
 
                 <EditText
                     android:id="@+id/author_name"
@@ -68,7 +68,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edition" />
+                    android:text="@string/edition" />
 
                 <EditText
                     android:id="@+id/edition"
@@ -86,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Publisher" />
+                    android:text="@string/publisher" />
 
                 <Spinner
                     android:id="@+id/publisher"
@@ -110,7 +110,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quantity" />
+                    android:text="@string/quantity" />
 
                 <EditText
                     android:id="@+id/qty"
@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price" />
+                    android:text="@string/price" />
 
                 <EditText
                     android:id="@+id/price"
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Language" />
+                    android:text="@string/language" />
 
                 <EditText
                     android:id="@+id/language"
@@ -190,7 +190,7 @@
                 android:layout_marginTop="10dp"
                 android:onClick="add"
                 android:padding="15dp"
-                android:text="Add book Information"
+                android:text="@string/add_book_information"
                 android:textAllCaps="false"
                 android:textSize="20sp" />
 
@@ -206,7 +206,7 @@
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
                    android:padding="15dp"
-                   android:text="Cancel"
+                   android:text="@string/cancel"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
                <Button
@@ -216,7 +216,7 @@
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
                    android:padding="15dp"
-                   android:text="Update"
+                   android:text="@string/update"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
            </LinearLayout>

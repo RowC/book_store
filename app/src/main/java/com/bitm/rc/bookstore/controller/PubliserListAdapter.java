@@ -14,7 +14,7 @@ import com.bitm.rc.bookstore.model.PublisherInfo;
 import java.util.List;
 
 public class PubliserListAdapter extends RecyclerView.Adapter<PubliserListAdapter.PublisherViewHolder> {
-    List<PublisherInfo> publisherInfoList;
+  public  List<PublisherInfo> publisherInfoList;
 
     @NonNull
     @Override

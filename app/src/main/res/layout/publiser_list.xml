@@ -25,7 +25,6 @@
                     android:id="@+id/pNameTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Book 1"
                     android:padding="8dp"
                     android:textSize="20sp"
                     android:visibility="visible"/>
@@ -33,7 +32,6 @@
                     android:id="@+id/pAddressTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Book 1"
                     android:padding="8dp"
                     android:textSize="20sp" />
 
