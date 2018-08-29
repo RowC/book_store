@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#a1c3fa"
     tools:context="com.bitm.rc.bookstore.ProfileActivity"
     android:orientation="vertical">
     <LinearLayout
