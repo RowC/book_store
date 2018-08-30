@@ -9,19 +9,44 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <EditText
-        android:id="@+id/txtBookName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number" />
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Book Name"
+    android:layout_marginRight="10dp"
+    android:textSize="20sp"/>
+       <EditText
+           android:id="@+id/txtBookName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="number"
+           android:textAlignment="center"
+           android:gravity="center"/>
+   </LinearLayout>
 
-    <EditText
-        android:id="@+id/txtSalesQty"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical">
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="20sp"
+         android:text="Quantity"
+         />
+     <EditText
+         android:id="@+id/txtSalesQty"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:ems="10"
+         android:inputType="numberDecimal" />
+ </LinearLayout>
 
     <EditText
         android:id="@+id/txtSalesPrice"
@@ -30,19 +55,31 @@
         android:ems="10"
         android:inputType="date" />
 
-    <EditText
-        android:id="@+id/txtSalesDate"
-        android:layout_width="match_parent"
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date" />
+        android:textSize="20sp"
+        android:text="Date"/>
+      <EditText
+          android:id="@+id/txtSalesDate"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ems="10"
+          android:hint="day/month/year"
+          android:inputType="date" />
+  </LinearLayout>
 </LinearLayout>
 
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal"
-       android:gravity="center">
+       android:gravity="center"
+       android:layout_marginBottom="10dp">
 
        <Button
            android:id="@+id/btnSalesCancel"
