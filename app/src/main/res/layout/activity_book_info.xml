@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#91bbfd"
     tools:context="com.bitm.rc.bookstore.BookInfoActivity">
 
@@ -26,9 +26,8 @@
                 android:textStyle="bold"
                 android:textColor="#fffcfc"
                 android:textColorHint="#fffcfc"
-
                 android:inputType="text"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,6 +40,7 @@
                     android:text="@string/book_name"
                     android:textStyle="bold"
                     android:textSize="20sp"
+                    android:layout_marginRight="10dp"
                     />
 
                 <EditText
@@ -65,7 +65,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/author_name"
                     android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <EditText
                     android:id="@+id/author_name"
@@ -89,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/edition"
                     android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <EditText
                     android:id="@+id/edition"
@@ -113,7 +115,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/publisher"
                     android:textStyle="bold"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <Spinner
                     android:id="@+id/publisher"
@@ -139,7 +142,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/quantity"
                     android:textStyle="bold"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <EditText
                     android:id="@+id/qty"
@@ -164,7 +168,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/price"
                     android:textStyle="bold"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <EditText
                     android:id="@+id/price"
@@ -189,7 +194,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/language"
                     android:textStyle="bold"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"/>
 
                 <EditText
                     android:id="@+id/language"
