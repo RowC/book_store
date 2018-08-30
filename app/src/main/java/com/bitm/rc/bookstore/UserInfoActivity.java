@@ -44,6 +44,7 @@ public class UserInfoActivity extends AppCompatActivity {
         userInfo.setUserName(userName.getText().toString());
         userInfo.setPassword(password.getText().toString());
         long insertedRow = userInfoManager.addUser(userInfo);
+
         /*if (insertedRow > 1) {
             mgs.setVisibility(View.VISIBLE);
             mgs.setText("One user already exist. You can not create more than one user!!!");
