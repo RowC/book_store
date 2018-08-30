@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#91bbfd"
     tools:context="com.bitm.rc.bookstore.SucessActivity"
     android:gravity="center"
     android:layout_gravity="center_vertical"
@@ -42,12 +43,13 @@
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go your home page"
-        android:background="@color/colorAccent"
-        android:textColor="#fff"
+        android:text="Go to your home page"
+        android:onClick="gotoHome"
+        android:background="#0c1fae"
         android:padding="10dp"
         android:textSize="20sp"
-        android:onClick="gotoHome"
+        android:textStyle="bold"
+        android:textColor="#fdfcfc"
         android:textAllCaps="false"/>
 
 </LinearLayout>

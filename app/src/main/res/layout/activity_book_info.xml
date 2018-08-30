@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#91bbfd"
     tools:context="com.bitm.rc.bookstore.BookInfoActivity">
 
     <ScrollView
@@ -21,6 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_book_name"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="#fffcfc"
+                android:textColorHint="#fffcfc"
+
                 android:inputType="text"
                 android:visibility="visible" />
 
@@ -32,13 +38,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/book_name" />
+                    android:text="@string/book_name"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    />
 
                 <EditText
                     android:id="@+id/book_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_book_name"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -50,13 +63,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/author_name" />
+                    android:text="@string/author_name"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:id="@+id/author_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_author_name"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -68,13 +87,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/edition" />
+                    android:text="@string/edition"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:id="@+id/edition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_edition"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -86,7 +111,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/publisher" />
+                    android:text="@string/publisher"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
                 <Spinner
                     android:id="@+id/publisher"
@@ -110,13 +137,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quantity" />
+                    android:text="@string/quantity"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/qty"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_book_quantity"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -129,13 +162,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/price" />
+                    android:text="@string/price"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_price"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -148,13 +187,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/language" />
+                    android:text="@string/language"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
 
                 <EditText
                     android:id="@+id/language"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_language"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="#fffcfc"
+                    android:textColorHint="#fffcfc"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -187,12 +232,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:onClick="add"
-                android:padding="15dp"
                 android:text="@string/add_book_information"
                 android:textAllCaps="false"
-                android:textSize="20sp" />
+                android:background="#0c1fae"
+                android:padding="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#fdfcfc"/>
 
            <LinearLayout
                android:layout_width="match_parent"
@@ -205,8 +253,11 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
-                   android:padding="15dp"
                    android:text="@string/cancel"
+                   android:background="#0c1fae"
+                   android:padding="5dp"
+                   android:textStyle="bold"
+                   android:textColor="#fdfcfc"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
                <Button
@@ -215,8 +266,12 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
                    android:layout_marginTop="10dp"
-                   android:padding="15dp"
                    android:text="@string/update"
+                   android:layout_marginLeft="3dp"
+                   android:background="#0c1fae"
+                   android:padding="5dp"
+                   android:textStyle="bold"
+                   android:textColor="#fdfcfc"
                    android:textAllCaps="false"
                    android:textSize="20sp" />
            </LinearLayout>

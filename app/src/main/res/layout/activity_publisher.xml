@@ -15,12 +15,20 @@
         android:padding="10dp"
         android:inputType="text"
         android:textSize="16sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#fffcfc"
+        android:textColorHint="#fffcfc"
         />
     <EditText
         android:id="@+id/publisher_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_publisher_address"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#fffcfc"
+        android:textColorHint="#fffcfc"
         android:inputType="text"
         android:padding="10dp"
         android:textSize="16sp"/>
@@ -30,6 +38,11 @@
         android:layout_height="wrap_content"
         android:text="Add Publisher Info"
         android:textAllCaps="false"
-        android:onClick="add"/>
+        android:onClick="add"
+        android:background="#0c1fae"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#fdfcfc"/>
 
 </LinearLayout>
