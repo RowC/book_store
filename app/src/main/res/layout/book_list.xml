@@ -28,7 +28,7 @@
                    android:hint="Book 1"
                    android:padding="8dp"
                    android:textSize="20sp"
-                   android:visibility="visible"/>
+                   android:visibility="gone"/>
                <TextView
                    android:id="@+id/bookTv"
                    android:layout_width="match_parent"

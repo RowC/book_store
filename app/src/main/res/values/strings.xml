@@ -19,6 +19,7 @@
     <string name="enter_store_name">Enter Store Name</string>
     <string name="submit">Submit</string>
     <string name="book_list">Book List</string>
+    <string name="publisher_list">Publisher List</string>
     <string name="sales_details">Sales List</string>
     <string name="user_details">User Details</string>
     <string name="save">Save</string>
