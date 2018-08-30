@@ -30,6 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_your_full_name"
+        android:textColorHint="#fcfafa"
+        android:textColor="#fcfafa"
         android:gravity="center"
         android:inputType="text"/>
 
@@ -38,6 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_your_user_name"
+        android:textColorHint="#fcfafa"
+        android:textColor="#fcfafa"
         android:gravity="center"
         android:inputType="text"/>
     <EditText
@@ -45,6 +49,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_your_password"
+        android:textColor="#fcfafa"
+        android:textColorHint="#fcfafa"
         android:inputType="textPassword"
         android:gravity="center" />
 
