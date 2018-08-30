@@ -81,7 +81,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:text="@string/add_publisher_info"
             android:padding="5dp"
             android:paddingHorizontal="20dp"
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_book_info"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:padding="5dp"
             android:paddingHorizontal="20dp"
             android:onClick="gotoBookInfo"
@@ -107,7 +107,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:text="@string/book_list"
             android:onClick="bookInfoList"
             android:background="#0c1fae"
@@ -119,7 +119,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:text="@string/sales_details"
             android:onClick="salesInfoList"
             android:paddingHorizontal="37dp"
@@ -132,7 +132,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="27sp"
+            android:textSize="20sp"
             android:text="@string/user_details"
             android:onClick="userInfoList"
             android:background="#0c1fae"
